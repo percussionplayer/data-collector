@@ -41,7 +41,6 @@ static bool BlockAllSignals()
  *    Waits for a SIGINT signal from the system to initiate shutdown.
  *
  */
-
 static void WaitForShutdownSignal()
 {
    sigset_t set;
@@ -93,6 +92,8 @@ int main()
          dataCollector.Stop();
       }
    }
+
+   closelog();
 
    return 0;
 }

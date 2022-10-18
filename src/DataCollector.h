@@ -11,6 +11,9 @@
 
 #pragma once
 
+#include <memory>
+#include <thread>
+
 class DataCollector {
 public:
    /* Standard member functions. Delete all unused ones. */
@@ -59,6 +62,11 @@ public:
    void Stop();
 
 private:
+   void RunGStreamer(std::atomic<bool> &ready);
+
+private:
    int m_variable;      // FRANK TODO: make these real and document
    int m_otherVariable;
+
+   std::shared_ptr<std::thread> m_watchdogThread;
 };
